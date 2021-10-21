@@ -1,0 +1,122 @@
+class TwoStack :
+    def __init__(self, cap) :
+      self.tos1 = -1
+      self.tos2 = cap
+      self.data=[0]*cap
+    
+
+    def size1(self) :
+      return self.tos1 + 1
+    
+
+    def size2(self) :
+      return len(self.data) - self.tos2 
+
+    
+
+    def push1(self, val) :
+      if (self.tos1 + 1 == self.tos2) :
+        print("Stack overflow") 
+        return 
+      self.tos1+=1
+      self.data[self.tos1] = val 
+
+    
+
+    def push2(self,val) :
+      if (self.tos1 + 1 == self.tos2) :
+        print("Stack overflow")
+        return
+      self.tos2-=1
+      self.data[self.tos2] = val 
+
+     
+
+    def pop1(self) :
+      if (self.tos1 == -1) :
+        print("Stack underflow")
+        return -1 
+      tr=self.data[self.tos1]
+      self.tos1-=1
+      return tr 
+      
+
+    def pop2(self) :
+      if (self.tos2 == len(self.data)) :
+        print("Stack underflow")
+        return -1
+      
+      tr=self.data[self.tos2] 
+      self.tos2+=1
+      
+      return tr
+
+    def top1(self) :
+      if (self.tos1 == -1) :
+        print("Stack underflow")
+        return -1
+      
+      return self.data[self.tos1] 
+     
+
+    def top2(self) :
+      if (self.tos2 == len(self.data)) :
+        print("Stack underflow")
+        return -1
+       
+      return self.data[self.tos2]
+     
+   
+
+cap=int(input()) 
+l1 = TwoStack(cap)
+while 1 > 0 :
+        str = input()
+        if str[0] == 'q':
+            break
+    
+        elif str[0] == 'p'and str[4]=='1':
+            val = int(str[-3] + str[-2])
+            l1.push1(val)
+        elif str[0] == 'p'and str[4]=='2':
+            val = int(str[-3] + str[-2])
+            l1.push2(val)
+        
+        elif str[0] == 't'and str[3]=='1':
+            val=l1.top1()
+            if val != -1:
+                print(val)
+
+        
+        elif str[0] == 't'and str[3]=='2':
+            val=l1.top2()
+            if val != -1:
+                print(val)
+
+        elif str[0] == 'p'and str[3]=='1':
+            val=l1.pop1()
+            if val != -1:
+                print(val)
+
+        
+        elif str[0] == 'p'and str[3]=='2':
+            val=l1.pop2()
+            if val != -1:
+                print(val)
+
+        
+        elif str[0] == 's':
+        
+            print(l1.size())
+        
+        elif str[0] == 'r':
+        
+            val=l1.removeFirst()
+            if val != -1:
+                print(val)
+       
+        elif str[0] == 'p':
+        
+            val=l1.top1()
+            if val != -1:
+                print(val)
